@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	printWelcome()
-	printGreeting(getResponseToPrompt("What is your name?"))
+	printGreeting(responseToPrompt("What is your name?"))
 	fmt.Println("Let's go on an adventure!")
 	travel()
 }
@@ -14,7 +14,7 @@ func printWelcome() {
 	fmt.Println("There are 8 planets to explore.")
 }
 
-func getResponseToPrompt(prompt string) string {
+func responseToPrompt(prompt string) string {
 	var response string
 	fmt.Println(prompt)
 	fmt.Scan(&response)
@@ -28,12 +28,11 @@ func printGreeting(name string) {
 func travel() {
 	var choice string
 	for choice != "Y" && choice != "N" {
-		choice = getResponseToPrompt("Shall I randomly choose a planet for you to visit? (Y or N)")
+		choice = responseToPrompt("Shall I randomly choose a planet for you to visit? (Y or N)")
 		if choice == "Y" {
 			travelToRandomPlanet()
 		} else if choice == "N" {
-			planetName := getResponseToPrompt("Name the planet you would like to visit.")
-			travelToPlanet(planetName)
+			travelToPlanet(responseToPrompt("Name the planet you would like to visit."))
 		} else {
 			fmt.Println("Sorry, I didn't get that.")
 		}
