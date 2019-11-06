@@ -1,50 +1,43 @@
-package main
+package spaceadventure
 
 import "fmt"
 
-func main() {
-	printWelcome()
-	printGreeting(responseToPrompt("What is your name?"))
-	fmt.Println("Let's go on an adventure!")
-	travel()
-}
-
-func printWelcome() {
+func PrintWelcome() {
 	fmt.Println("Welcome to the Solar System!")
 	fmt.Println("There are 8 planets to explore.")
 }
 
-func responseToPrompt(prompt string) string {
+func ResponseToPrompt(prompt string) string {
 	var response string
 	fmt.Println(prompt)
 	fmt.Scan(&response)
 	return response
 }
 
-func printGreeting(name string) {
+func PrintGreeting(name string) {
 	fmt.Printf("Nice to meet you, %s. My name is Eliza, I'm an old friend of Siri.\n", name)
 }
 
-func travel() {
+func Travel() {
 	var choice string
 	for choice != "Y" && choice != "N" {
-		choice = responseToPrompt("Shall I randomly choose a planet for you to visit? (Y or N)")
+		choice = ResponseToPrompt("Shall I randomly choose a planet for you to visit? (Y or N)")
 		if choice == "Y" {
-			travelToRandomPlanet()
+			TravelToRandomPlanet()
 		} else if choice == "N" {
-			travelToPlanet(responseToPrompt("Name the planet you would like to visit."))
+			TravelToPlanet(ResponseToPrompt("Name the planet you would like to visit."))
 		} else {
 			fmt.Println("Sorry, I didn't get that.")
 		}
 	}
 }
 
-func travelToRandomPlanet() {
+func TravelToRandomPlanet() {
 	fmt.Println("Traveling to Jupiter...")
 	fmt.Println("Arrived at Jupiter. The large red spot appears ominous.")
 }
 
-func travelToPlanet(planetName string) {
+func TravelToPlanet(planetName string) {
 	fmt.Printf("Traveling to %s...\n", planetName)
 	fmt.Println("Arrived at Neptune. A very cold planet, furthest from the sun.")
 }
