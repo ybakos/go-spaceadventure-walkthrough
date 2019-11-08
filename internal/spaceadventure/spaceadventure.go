@@ -2,7 +2,7 @@ package spaceadventure
 
 import "fmt"
 
-func Start() {
+func Start(planetarySystem PlanetarySystem) {
 	printWelcome()
 	printGreeting(responseToPrompt("What is your name?"))
 	fmt.Println("Let's go on an adventure!")
